@@ -1,0 +1,31 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "homepage" : "http://Nightear.github.io/myapp",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-cl-audio-player": "^2.0.0",
+    "react-dom": "^16.2.0",
+    "react-id-swiper": "^1.5.6",
+    "react-music-player": "^1.0.3",
+    "react-player": "^0.25.3",
+    "react-redux": "^5.0.6",
+    "react-scripts": "1.0.17",
+    "react-sound": "^0.10.0",
+    "react-soundplayer": "^1.0.3",
+    "react-video-cover": "^1.1.0",
+    "redux": "^3.7.2",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.77.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "semantic-ui": "^2.2.13"
+  }
+}
