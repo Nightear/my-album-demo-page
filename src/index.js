@@ -14,5 +14,5 @@ ReactDOM.render(<Slider />, document.getElementById('banner'));
 ReactDOM.render(<CFSlider />, document.getElementById('CFSlider'));
 ReactDOM.render(<LabelImg />, document.getElementById('intro'));
 ReactDOM.render(<Tab />, document.getElementById('tab'));
-//ReactDOM.render(<App />, document.getElementById('root'));
+
 registerServiceWorker();
