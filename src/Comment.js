@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as contactAction from './actions/contactAction';
+import * as commentAction from './actions/commentAction';
 
 import { Button,  Form, Icon, Divider, Comment} from 'semantic-ui-react'
 
@@ -15,13 +15,13 @@ class Comments extends Component {
      
     this.state = {
       name: '',
-      comment: '',
+      commentText: '',
     }
   }
 
   handleCommentChange(e){
     this.setState({
-      comment: e.target.value
+      commentText: e.target.value
     })
   }
   handleNameChange(e){
@@ -33,45 +33,32 @@ class Comments extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    let contact = {
+    let comment = {
       name: this.state.name,
-      comment: this.state.comment
+      commentText: this.state.commentText
     }
     this.setState({
       name: '',
-      comment: ''
+      commentText: ''
     });
-    this.props.createContact(contact);
+    this.props.createComment(comment);
   }
 
 
   listView(data, index){
     return (
-/*      <div className="row">
-        <div className="col-md-10">
-          <li key={index} className="list-group-item clearfix">
-            {data.name}
-          </li>
-        </div>
-        <div className="col-md-2">
-          <button onClick={(e) => this.deleteContact(e, index)} className="btn btn-danger">
-            Remove
-          </button>
-        </div>
-    </div> 
-*/
     <div>
       <Comment.Group>
         <Comment>
           <Comment.Content>
             <Comment.Author as='a'>Author: {data.name}</Comment.Author>
 
-            <Comment.Text key={index}>Comments: {data.comment}</Comment.Text>
+            <Comment.Text key={index}>Comments: {data.commentText}</Comment.Text>
             
           </Comment.Content>
 
               <Comment.Actions style={{float: 'right',}}>
-                <a onClick={(e) => this.deleteContact(e, index)} >Delete</a> 
+                <a onClick={(e) => this.deleteComment(e, index)} >Delete</a> 
               </Comment.Actions>
               <Divider hidden />
         </Comment>
@@ -80,9 +67,9 @@ class Comments extends Component {
     )
   }
 
-  deleteContact(e, index){
+  deleteComment(e, index){
     e.preventDefault();
-    this.props.deleteContact(index);
+    this.props.deleteComment(index);
   }
 
   render() {
@@ -93,7 +80,7 @@ class Comments extends Component {
         <hr />
         <div>
           { <ul className="list-group">
-          {this.props.contacts.map((contact, i) => this.listView(contact, i))}
+          {this.props.comments.map((comment, i) => this.listView(comment, i))}
         </ul> }
 
           <Form onSubmit={this.handleSubmit}>
@@ -123,15 +110,15 @@ class Comments extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    contacts: state.contacts,
+    comments: state.comments,
 
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createContact: contact => dispatch(contactAction.createContact(contact)),
-    deleteContact: index =>dispatch(contactAction.deleteContact(index))
+    createComment: comment => dispatch(commentAction.createComment(comment)),
+    deleteComment: index =>dispatch(commentAction.deleteComment(index))
   }
 };
 
